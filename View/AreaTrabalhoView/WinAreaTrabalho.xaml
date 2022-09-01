@@ -1,0 +1,59 @@
+﻿<Window x:Class="View.AreaTrabalhoView.WinAreaTrabalho"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:View.AreaTrabalhoView"
+        mc:Ignorable="d"
+        
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"        
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        
+        Title="SOF" Height="768" Width="1024" WindowStyle="None" WindowState="Maximized" AllowsTransparency="True" WindowStartupLocation="CenterScreen"
+        ContentRendered="Window_ContentRendered">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#2d3436">
+
+        </Grid>
+        <Grid Grid.Row="1">
+            <materialDesign:ColorZone x:Name="barraTarefa" Mode="PrimaryMid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <StackPanel Orientation="Horizontal">
+                    <Button x:Name="btnIniciar" Style="{DynamicResource MaterialDesignRaisedButton}" Width="60" Padding="2 0 0 5" Height="{Binding ActualHeight, ElementName=barraTarefa}">
+                        <materialDesign:PackIcon Kind="Menu" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Height="45" Width="45"/>
+                    </Button>
+                    <TextBox x:Name="tbxPesquisar" Background="White" Foreground="Black" Margin="2 0 0 0" Width="300" TabIndex="0" materialDesign:HintAssist.IsFloating="True"/>
+                </StackPanel>
+            </materialDesign:ColorZone>
+        </Grid>
+
+        <materialDesign:DialogHost IsOpen="False" x:Name="dialogLoading" Grid.RowSpan="2" >
+            <materialDesign:DialogHost.DialogContent>
+                <StackPanel Margin="20" Orientation="Vertical" Height="80" Width="220">
+                    <StackPanel Orientation="Horizontal" Margin="0 0 0 27">
+                        <TextBlock Text="Carregando..." FontWeight="Black" FontSize="16"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}"
+                                         Value="35"
+                                         IsIndeterminate="True"
+                                         Margin="0 0 20 0"
+                                         Height="32"
+                                         Width="32"/>
+                        <TextBlock Text="Por favor aguarde!" FontSize="13"/>
+                    </StackPanel>
+                </StackPanel>
+            </materialDesign:DialogHost.DialogContent>
+        </materialDesign:DialogHost>
+
+    </Grid>
+</Window>
